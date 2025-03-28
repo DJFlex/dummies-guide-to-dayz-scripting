@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="DayZ Standalone Scripting for Beginners - DZ Academy">
+  <header class="hero">
+    <div class="container">
+      <h1>DayZ Standalone Scripting for Beginners (v1.20+)</h1>
+      <p class="subtitle">by Big Grampa - DZ Academy</p>
+      <p class="description">
+        Learn to create mods for DayZ Standalone from scratch, even with no prior programming experience
+      </p>
+      <a href="/chapter1" class="cta-button">Start Learning</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Welcome to DayZ Standalone Modding & Scripting</h2>
+      <p>
+        This web-based book will teach you how to create mods for DayZ Standalone (version 1.20 and above) 
+        from scratch, even if you have no prior programming or modding experience. We'll start with the 
+        absolute basics and gradually build up your knowledge, chapter by chapter.
+      </p>
+      <p>
+        By the end, you'll have built a simple mod – a clothes storage locker with a code lock where you 
+        can stash items – and learned a ton of DayZ scripting concepts along the way.
+      </p>
+    </section>
+
+    <section class="chapters">
+      <h2>Chapter Overview</h2>
+      <div class="chapter-grid">
+        <div class="chapter-card">
+          <h3>Chapter 1</h3>
+          <h4>Introduction to DayZ Modding</h4>
+          <p>Learn what DayZ Standalone modding is and why this guide was created for beginners.</p>
+          <a href="/chapter1" class="chapter-link">Read Chapter 1</a>
+        </div>
+        
+        <div class="chapter-card">
+          <h3>Chapter 2</h3>
+          <h4>Setting Up Your Modding Environment</h4>
+          <p>Install and configure the necessary tools to start creating DayZ mods.</p>
+          <a href="/chapter2" class="chapter-link">Read Chapter 2</a>
+        </div>
+        
+        <div class="chapter-card">
+          <h3>Chapter 3</h3>
+          <h4>Enforce Script Basics</h4>
+          <p>Learn the fundamentals of Enforce Script, the language used for DayZ modding.</p>
+          <a href="/chapter3" class="chapter-link">Read Chapter 3</a>
+        </div>
+        
+        <div class="chapter-card">
+          <h3>Chapter 4</h3>
+          <h4>Understanding Classes and Objects</h4>
+          <p>Explore object-oriented programming concepts essential for DayZ modding.</p>
+          <a href="/chapter4" class="chapter-link">Read Chapter 4</a>
+        </div>
+        
+        <div class="chapter-card">
+          <h3>Chapter 5</h3>
+          <h4>Creating the Clothes Locker Item</h4>
+          <p>Configure and add a new item to the game with proper properties.</p>
+          <a href="/chapter5" class="chapter-link">Read Chapter 5</a>
+        </div>
+        
+        <div class="chapter-card">
+          <h3>Chapter 6</h3>
+          <h4>Scripting the Lock Mechanism</h4>
+          <p>Implement the locking functionality for our custom storage container.</p>
+          <a href="/chapter6" class="chapter-link">Read Chapter 6</a>
+        </div>
+        
+        <div class="chapter-card">
+          <h3>Chapter 7</h3>
+          <h4>Testing and Playing</h4>
+          <p>Learn how to test your mod and experiment with different configurations.</p>
+          <a href="/chapter7" class="chapter-link">Read Chapter 7</a>
+        </div>
+        
+        <div class="chapter-card">
+          <h3>Chapter 8</h3>
+          <h4>Conclusion and Next Steps</h4>
+          <p>Recap what you've learned and discover paths for further modding adventures.</p>
+          <a href="/chapter8" class="chapter-link">Read Chapter 8</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>About This Guide</h2>
+      <p>
+        This guide is written for total beginners. You don't need any programming background or modding experience. 
+        We'll start from zero, explaining concepts in a fun, intuitive way. Each chapter builds on the last, 
+        so by following in order, you'll gradually gain both programming skills and DayZ-specific modding knowledge.
+      </p>
+      <p>
+        Along the way, we'll include examples, code snippets, and even some small challenges to test your understanding. 
+        By the end, you'll have created a working DayZ mod: a Clothes Locker that acts as a storage container with a 
+        (simulated) code lock.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 DZ Academy - DayZ Modding Tutorial</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .hero {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 4rem 0;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+  
+  .description {
+    max-width: 600px;
+    margin: 1.5rem auto;
+    font-size: 1.2rem;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: var(--highlight);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #e06a40;
+  }
+  
+  .intro, .chapters, .about {
+    margin: 3rem 0;
+  }
+  
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .chapter-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .chapter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chapter-card h3 {
+    color: var(--highlight);
+    margin: 0;
+  }
+  
+  .chapter-card h4 {
+    margin: 0.5rem 0 1rem;
+  }
+  
+  .chapter-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+  }
+  
+  .chapter-link:hover {
+    background-color: var(--primary);
+  }
+  
+  footer {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .description {
+      font-size: 1rem;
+    }
+  }
+</style>

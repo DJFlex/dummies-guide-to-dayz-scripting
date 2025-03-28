@@ -1,0 +1,267 @@
+---
+import TutorialLayout from '../layouts/TutorialLayout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import Quiz from '../components/Quiz.astro';
+---
+
+<TutorialLayout title="Setting Up Your Modding Environment" chapter={2}>
+  <p>
+    Before we can start creating our mod, we need to set up a proper development environment. This chapter will guide you through 
+    installing the necessary tools and configuring your workspace for DayZ modding.
+  </p>
+
+  <section>
+    <h3>Installing DayZ Tools</h3>
+    <p>
+      DayZ Tools is a collection of official modding utilities provided by Bohemia Interactive. Here's how to install it:
+    </p>
+    <ol>
+      <li>Open Steam and go to your Library</li>
+      <li>Find "DayZ" in your game list</li>
+      <li>
+        Look for "DayZ Tools" under the DLC section (it should be free)
+        <ul>
+          <li>If you don't see it, search for "DayZ Tools" in the Steam store</li>
+        </ul>
+      </li>
+      <li>Click "Install" and wait for the download to complete</li>
+    </ol>
+    <p>
+      Once installed, you'll find DayZ Tools in your Steam library. The tools include:
+    </p>
+    <ul>
+      <li>
+        <strong>Workbench</strong>: An integrated development environment for testing scripts and previewing content
+      </li>
+      <li>
+        <strong>Addon Builder</strong>: For packaging your mod files into PBO format
+      </li>
+      <li>
+        <strong>Binarize</strong>: Converts text configs to binary format (faster loading)
+      </li>
+      <li>
+        <strong>Object Builder</strong>: For creating and editing 3D models (advanced)
+      </li>
+      <li>
+        <strong>Terrain Builder</strong>: For creating and editing terrains (advanced)
+      </li>
+    </ul>
+    <p>
+      For this tutorial, we'll primarily use Addon Builder, though Workbench can be helpful for testing.
+    </p>
+  </section>
+
+  <section>
+    <h3>Setting Up the P: Drive</h3>
+    <p>
+      DayZ modding tools use a virtual P: drive to access game files. This is a crucial step:
+    </p>
+    <ol>
+      <li>
+        Launch "DayZ Tools" from your Steam library
+        <ul>
+          <li>This will open a launcher with various tools</li>
+        </ul>
+      </li>
+      <li>
+        Click on "Mount Virtual Drive (P:)"
+        <ul>
+          <li>This creates a virtual drive that points to your DayZ installation</li>
+          <li>You should see a confirmation that the drive was mounted successfully</li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      The P: drive gives you access to the game's files, which is essential for modding. You'll see folders like:
+    </p>
+    <ul>
+      <li>P:\dz - Contains the game's core files</li>
+      <li>P:\scripts - Contains the game's script files</li>
+      <li>P:\addons - Contains the game's addon files</li>
+    </ul>
+    <p>
+      Note: The P: drive is virtual and only exists while the DayZ Tools are running. If you restart your computer or unmount the drive, 
+      you'll need to mount it again when you continue modding.
+    </p>
+  </section>
+
+  <section>
+    <h3>Creating Your Mod Folder Structure</h3>
+    <p>
+      Now we'll create a folder structure for our mod. This organization is important for the game to recognize and load your mod correctly:
+    </p>
+    <ol>
+      <li>
+        Create a folder named "@ClothesLocker" in your DayZ installation directory
+        <ul>
+          <li>
+            Typically: C:\Program Files (x86)\Steam\steamapps\common\DayZ
+            <br>
+            (Your path might be different if you installed Steam or DayZ in a custom location)
+          </li>
+          <li>The @ symbol is important - it tells DayZ this is a mod folder</li>
+        </ul>
+      </li>
+      <li>
+        Inside @ClothesLocker, create the following structure:
+        <ul>
+          <li>
+            Addons/ - This will contain our packed mod files (.pbo)
+          </li>
+          <li>
+            Scripts/ - This will contain our source script files
+            <ul>
+              <li>
+                Inside Scripts/, create these folders:
+                <ul>
+                  <li>3_Game/ - For game-related scripts</li>
+                  <li>4_World/ - For world entity scripts</li>
+                  <li>5_Mission/ - For mission-related scripts</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      Your folder structure should look like this:
+    </p>
+    <pre>
+@ClothesLocker/
+├── Addons/
+└── Scripts/
+    ├── 3_Game/
+    ├── 4_World/
+    └── 5_Mission/
+    </pre>
+    <p>
+      These numbered folders (3_Game, 4_World, etc.) correspond to DayZ's script loading hierarchy. Scripts in higher-numbered 
+      folders can access and override scripts in lower-numbered folders. This system allows mods to extend or modify the game's 
+      functionality in a controlled way.
+    </p>
+  </section>
+
+  <section>
+    <h3>Creating the Basic Mod Files</h3>
+    <p>
+      Now we'll create the essential files that define our mod:
+    </p>
+    <ol>
+      <li>
+        Create a file named "config.cpp" in the Scripts folder (@ClothesLocker/Scripts/)
+      </li>
+      <li>
+        Open it in your text editor (Notepad++ or similar)
+      </li>
+      <li>
+        Add the following code:
+      </li>
+    </ol>
+
+    <CodeBlock language="cpp" filename="config.cpp">
+class CfgPatches
+{
+    class ClothesLockerMod
+    {
+        units[] = {};
+        weapons[] = {};
+        requiredVersion = 0.1;
+        requiredAddons[] = {"DZ_Data"};
+    };
+};
+
+class CfgMods
+{
+    class ClothesLockerMod
+    {
+        dir = "ClothesLockerMod";
+        picture = "";
+        action = "";
+        hideName = 1;
+        hidePicture = 1;
+        name = "Clothes Locker Mod";
+        credits = "Your Name";
+        author = "Your Name";
+        authorID = "0";
+        version = "1.0";
+        extra = 0;
+        type = "mod";
+        
+        dependencies[] = {"Game", "World", "Mission"};
+        
+        class defs
+        {
+            class gameScriptModule
+            {
+                value = "";
+                files[] = {"ClothesLockerMod/Scripts/3_Game"};
+            };
+            class worldScriptModule
+            {
+                value = "";
+                files[] = {"ClothesLockerMod/Scripts/4_World"};
+            };
+            class missionScriptModule
+            {
+                value = "";
+                files[] = {"ClothesLockerMod/Scripts/5_Mission"};
+            };
+        };
+    };
+};
+</CodeBlock>
+
+    <p>
+      Let's break down what this config does:
+    </p>
+    <ul>
+      <li>
+        <strong>CfgPatches</strong>: Defines the mod's dependencies. We're requiring "DZ_Data" which contains basic game data.
+      </li>
+      <li>
+        <strong>CfgMods</strong>: Defines the mod itself, including:
+        <ul>
+          <li>Name, author, and version information</li>
+          <li>Dependencies on game modules</li>
+          <li>Script paths for each module (3_Game, 4_World, 5_Mission)</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      This configuration tells DayZ what our mod is called, what it depends on, and where to find its script files.
+    </p>
+  </section>
+
+  <section>
+    <h3>Creating a Simple Script</h3>
+    <p>
+      Let's create a simple script to verify our setup works:
+    </p>
+    <ol>
+      <li>
+        Create a folder named "ClothesLockerMission" inside the 5_Mission folder
+        <br>
+        (@ClothesLocker/Scripts/5_Mission/ClothesLockerMission/)
+      </li>
+      <li>
+        Create a file named "ClothesLockerMission.c" inside this folder
+      </li>
+      <li>
+        Add the following code:
+      </li>
+    </ol>
+
+    <CodeBlock language="enforce" filename="ClothesLockerMission.c">
+modded class MissionServer
+{
+    override void OnInit()
+    {
+        super.OnInit();
+        Print("[ClothesLockerMod] Hello World! Mod is loaded.");
+    }
+};
+</CodeBlock>
+
+    <p>
+      This simple script "modifies" (modded keyword)

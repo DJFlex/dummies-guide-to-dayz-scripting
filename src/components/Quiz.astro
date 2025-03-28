@@ -1,0 +1,53 @@
+---
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<div class="quiz-container">
+  <div class="quiz-question">
+    <h4>Quiz Question</h4>
+    <p>{question}</p>
+  </div>
+  <div class="quiz-answer">
+    <h4>Answer</h4>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .quiz-container {
+    margin: 2rem 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .quiz-question {
+    background-color: var(--secondary);
+    color: white;
+    padding: 1rem;
+  }
+  
+  .quiz-question h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .quiz-question p {
+    margin-bottom: 0;
+  }
+  
+  .quiz-answer {
+    padding: 1rem;
+    background-color: #f9f9f9;
+  }
+  
+  .quiz-answer h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--highlight);
+  }
+</style>

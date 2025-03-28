@@ -1,0 +1,137 @@
+---
+import TutorialLayout from '../layouts/TutorialLayout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import Quiz from '../components/Quiz.astro';
+---
+
+<TutorialLayout title="Introduction to DayZ Modding" chapter={1}>
+  <p>
+    Welcome to the first chapter of our DayZ Standalone modding tutorial! In this chapter, we'll introduce you to the world of 
+    DayZ modding, explain what it is, and why this guide was created specifically for beginners.
+  </p>
+
+  <section>
+    <h3>What is DayZ Standalone Modding?</h3>
+    <p>
+      DayZ Standalone is a survival video game developed by Bohemia Interactive. It places players in a post-apocalyptic world 
+      where they must survive against zombies, other players, and the harsh environment. While the base game offers an incredible 
+      experience, modding allows players and developers to extend, modify, or completely transform the game.
+    </p>
+    <p>
+      Modding refers to the process of creating modifications (mods) for the game. These mods can:
+    </p>
+    <ul>
+      <li>Add new items, weapons, vehicles, or buildings</li>
+      <li>Change game mechanics (like stamina, hunger rates, or zombie behavior)</li>
+      <li>Add entirely new systems (like base building enhancements or economy systems)</li>
+      <li>Alter the map or create new terrains</li>
+      <li>Improve or change the user interface</li>
+    </ul>
+    <p>
+      DayZ Standalone uses the Enfusion engine, which is different from the older Arma 2 engine used in the original DayZ mod. 
+      This means the modding approach is different, using a language called Enforce Script (sometimes called EnScript) rather than 
+      the SQF scripting language used in Arma.
+    </p>
+  </section>
+
+  <section>
+    <h3>Why This Guide Was Created</h3>
+    <p>
+      If you've ever tried to learn DayZ modding, you might have encountered these challenges:
+    </p>
+    <ul>
+      <li>
+        <strong>Scattered Information</strong>: Documentation exists but is spread across forums, Discord channels, and various websites.
+      </li>
+      <li>
+        <strong>Assumed Knowledge</strong>: Many guides assume you already know programming basics or have modded other games.
+      </li>
+      <li>
+        <strong>Outdated Content</strong>: DayZ has evolved, and some older guides no longer apply to current versions.
+      </li>
+      <li>
+        <strong>Complex Examples</strong>: Many tutorials jump straight into complex mods without explaining the fundamentals.
+      </li>
+    </ul>
+    <p>
+      This guide aims to solve these problems by:
+    </p>
+    <ul>
+      <li>Starting from absolute zero – no programming experience required</li>
+      <li>Explaining concepts in plain language with analogies and examples</li>
+      <li>Building knowledge incrementally, chapter by chapter</li>
+      <li>Focusing on DayZ version 1.20+ (current as of this writing)</li>
+      <li>Creating a practical, working mod that demonstrates key concepts</li>
+    </ul>
+    <p>
+      By the end of this tutorial, you'll have created a functional mod: a clothes storage locker with a code lock. Along the way, 
+      you'll learn the fundamentals of DayZ modding that you can apply to your own creative projects.
+    </p>
+  </section>
+
+  <section>
+    <h3>What You'll Need</h3>
+    <p>
+      Before we begin, make sure you have:
+    </p>
+    <ul>
+      <li>
+        <strong>DayZ Standalone</strong>: The game itself, purchased through Steam (not the free DayZ SA Launcher, which is just a 
+        tool for joining servers).
+      </li>
+      <li>
+        <strong>DayZ Tools</strong>: Available as free DLC on Steam. This includes essential modding tools like the Workbench and 
+        Addon Builder.
+      </li>
+      <li>
+        <strong>A Text Editor</strong>: Notepad++ is recommended for beginners (free), though any code editor works. Visual Studio 
+        Code is another excellent option with syntax highlighting for Enforce Script.
+      </li>
+      <li>
+        <strong>Time and Patience</strong>: Modding is a learning process. Don't expect to create complex mods immediately. 
+        We'll start small and build up.
+      </li>
+    </ul>
+    <p>
+      You don't need:
+    </p>
+    <ul>
+      <li>
+        <strong>Programming Experience</strong>: We'll explain programming concepts as we go.
+      </li>
+      <li>
+        <strong>3D Modeling Skills</strong>: For this tutorial, we'll use existing game assets.
+      </li>
+      <li>
+        <strong>A Dedicated Server</strong>: You can test your mod in offline mode.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Our Project: The Clothes Locker</h3>
+    <p>
+      Throughout this tutorial, we'll be creating a "Clothes Locker" mod. This will be a storage container where players can 
+      store items, protected by a code lock. We've chosen this project because:
+    </p>
+    <ul>
+      <li>It's practical and useful in gameplay</li>
+      <li>It introduces key modding concepts (items, inventory, interaction)</li>
+      <li>It requires both config work and scripting</li>
+      <li>It's simple enough for beginners but can be expanded with more features</li>
+    </ul>
+    <p>
+      By the end, you'll have a working mod that you can use in your game or share with others. More importantly, you'll understand 
+      the fundamentals of DayZ modding that you can apply to your own creative ideas.
+    </p>
+  </section>
+
+  <Quiz question="What language is used for scripting in DayZ Standalone, and how does it differ from the original DayZ mod?">
+    <p>
+      DayZ Standalone uses Enforce Script (or EnScript), which is part of the Enfusion engine. This differs from the original 
+      DayZ mod which used SQF scripting language from the Arma 2 engine. Enforce Script is more structured, object-oriented, 
+      and similar to modern programming languages like C# or Java, making it more powerful but also requiring a different 
+      approach to modding than the older SQF scripts.
+    </p>
+  </Quiz>
+</TutorialLayout>
